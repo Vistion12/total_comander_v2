@@ -1,0 +1,99 @@
+﻿<Window x:Class="total_comander_v2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:total_comander_v2"
+        mc:Ignorable="d"
+        Title="Total Comander" Height="450" Width="800">
+    <Window.Resources>
+        <ContextMenu x:Key="MyContextMenu">
+            <MenuItem Header="Открыть" />
+            <MenuItem Header="Копировать"/>
+            <MenuItem Header="Вставить"/>
+            <MenuItem Header="Переименовать"/>
+            <MenuItem Header="Удалить"/>
+        </ContextMenu>
+    </Window.Resources>
+    <Window.Icon>
+        <ImageSource>C:\Users\Никита\source\repos\WpfApp2\cmndr.png</ImageSource>
+    </Window.Icon>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <Menu x:Name="mainMenu" BorderBrush="Black" Height="20" VerticalAlignment="Top">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Header="Файл">
+                    <MenuItem Header="Открыть" ></MenuItem>
+                    <MenuItem Header="Копировать" ></MenuItem>
+                    <MenuItem Header="Вставить"></MenuItem>
+                    <MenuItem Header="Удалить" ></MenuItem>
+                    <MenuItem Header="Переименовать" ></MenuItem>
+                    <MenuItem Header="Выход" ></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Помощь" HorizontalAlignment="Right" >
+                    <MenuItem Header="О нас" ></MenuItem>
+                </MenuItem>
+            </Menu>
+            <TextBox x:Name="tb_Search" Foreground="Black" Width="200" BorderBrush="Black" HorizontalAlignment="Left">Поиск...</TextBox>
+        </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Левый ListView -->
+            <ListView Grid.Column="0" x:Name="listviewleft" BorderBrush="Black" ItemsSource="{Binding FilesLeft}" ContextMenu="{StaticResource MyContextMenu}" SelectionChanged="get_path">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Имя" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Тип" Width="80" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Дата" Width="100" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Header="Размер" Width="100" DisplayMemberBinding="{Binding Size}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!-- Правый ListView -->
+            <ListView Grid.Column="1" x:Name="listviewright" BorderBrush="Black" ItemsSource="{Binding FilesRight}" ContextMenu="{StaticResource MyContextMenu}" SelectionChanged="get_path">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Имя" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Тип" Width="80" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Дата" Width="100" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Header="Размер" Width="100" DisplayMemberBinding="{Binding Size}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Путь:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="comboBox_left" Grid.Column="1"  VerticalAlignment="Center" Background="#FFDAD0C7" BorderBrush="Gray" Width="Auto"/>
+            <TextBox x:Name="textBox_path_left" Grid.Column="2"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0" TextWrapping="Wrap" Width="Auto"/>
+            <ComboBox x:Name="comboBox_right" Grid.Column="3"  VerticalAlignment="Center" Background="#FFDAD0C7" BorderBrush="Gray" Width="Auto"/>
+            <TextBox x:Name="textBox_path_right" Grid.Column="4"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0" TextWrapping="Wrap" Width="Auto"/>
+        </Grid>
+        <UniformGrid Grid.Row="3" Rows="1">
+            <Button Content="F1(Открыть)" Click="OpenButton_Click"/>
+            <Button Content="F2(Копировать)" Click="CopyButton_Click"/>
+            <Button Content="F3(Вставить)" Click="PasteButton_Click"/>
+            <Button Content="F4(Удалить)" Click="DeleteButton_Click"/>
+            <Button Content="F5(Переименовать)" Click="RenameButton_Click"/>
+        </UniformGrid>
+    </Grid>
+</Window>
