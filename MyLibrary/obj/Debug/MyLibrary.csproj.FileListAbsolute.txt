@@ -1,0 +1,8 @@
+C:\Users\Никита\source\repos\MyLibrary\bin\Debug\MyLibrary.dll
+C:\Users\Никита\source\repos\MyLibrary\bin\Debug\MyLibrary.pdb
+C:\Users\Никита\source\repos\MyLibrary\obj\Debug\MyLibrary.csproj.AssemblyReference.cache
+C:\Users\Никита\source\repos\MyLibrary\obj\Debug\MyLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Никита\source\repos\MyLibrary\obj\Debug\MyLibrary.dll
+C:\Users\Никита\source\repos\MyLibrary\obj\Debug\MyLibrary.pdb
+C:\Users\Никита\source\repos\MyLibrary\obj\Debug\MyLibrary.Form1.resources
+C:\Users\Никита\source\repos\MyLibrary\obj\Debug\MyLibrary.csproj.GenerateResource.cache
